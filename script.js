@@ -300,12 +300,8 @@ function updateLyrics() {
             currentLyricIndex = nextLyricIndex;
             
             if (currentLyricIndex >= 0) {
-                lyricsDiv.style.opacity = '0';
-                
-                setTimeout(() => {
-                    createEnvelope();
-                    lyricsDiv.style.opacity = '1';
-                }, 500);
+                lyricsDiv.style.opacity = '1';
+                createEnvelope();
             } else {
                 lyricsDiv.style.opacity = '0';
             }
@@ -322,18 +318,12 @@ function createEnvelope() {
     `;
     
     lyricsDiv.innerHTML = `
-        <div class="letter">
+        <div class="letter visible">
             ${letterContent}
         </div>
     `;
     
-    setTimeout(() => {
-        const letter = lyricsDiv.querySelector('.letter');
-        if (letter) {
-            letter.classList.add('visible');
-        }
-        startMusic();
-    }, 500);
+    startMusic();
 }
 
 function animate() {
